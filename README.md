@@ -90,14 +90,11 @@ A modern, responsive weather application that provides real-time weather informa
 - **Backend**
   - Node.js
   - Express.js
-  - TypeScript
   - MongoDB for data storage
-  - JWT for authentication
   - RESTful API architecture
 
 - **APIs**
   - WeatherAPI.com for weather data
-  - OpenWeatherMap API (optional)
 
 ## 🚀 Getting Started
 
@@ -105,6 +102,7 @@ A modern, responsive weather application that provides real-time weather informa
 
 - Node.js 18.0 or higher
 - npm or yarn package manager
+- MongoDB installed and running locally (or MongoDB Atlas account)
 
 ### Installation
 
@@ -114,26 +112,48 @@ A modern, responsive weather application that provides real-time weather informa
    cd weather-space
    ```
 
-2. Install dependencies:
+2. Install frontend dependencies:
    ```bash
+   cd frontend
    npm install
    # or
    yarn install
    ```
 
-3. Create a `.env.local` file in the root directory and add your API keys:
-   ```
-   NEXT_PUBLIC_WEATHER_API_KEY=your_weather_api_key
+3. Install backend dependencies:
+   ```bash
+   cd ../backend
+   npm install
+   # or
+   yarn install
    ```
 
-4. Run the development server:
+4. Create a `.env` file in the backend directory:
+   ```
+   WEATHER_API_KEY=your_weather_api_key
+   MONGO_URI=mongodb://localhost:27017/weatherDB
+   ```
+
+5. Create a `.env` file in the frontend directory:
+   ```
+   NEXT_PUBLIC_WEATHER_API_KEY=3adf7b53882242608a2170921251204
+   ```
+
+6. Start the backend server:
    ```bash
+   cd backend
+   node index.js
+   ```
+
+7. Start the frontend development server:
+   ```bash
+   cd frontend
    npm run dev
    # or
    yarn dev
    ```
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser.
+8. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## 📝 API Documentation
 
@@ -143,6 +163,13 @@ A modern, responsive weather application that provides real-time weather informa
   - Current weather: `/current.json`
   - Forecast: `/forecast.json`
 - Rate limit: 1,000,000 calls per month (free tier)
+
+### Backend API Endpoints
+- Health check: `GET /api/health`
+- Weather data: `GET /api/weather?city=London`
+- Search weather: `GET /api/weather/search?city=London`
+- Search history: `GET /api/weather/history`
+- Clear history: `DELETE /api/weather/history`
 
 ## 🎨 Features in Detail
 
@@ -176,30 +203,25 @@ A modern, responsive weather application that provides real-time weather informa
 weather-space/
 ├── frontend/            # Frontend application
 │   ├── public/          # Static assets
-│   └── src/
-│       ├── app/         # Next.js app router
-│       │   ├── components/  # Reusable UI components
-│       │   ├── hooks/       # Custom React hooks
-│       │   ├── utils/       # Utility functions
-│       │   ├── types/       # TypeScript type definitions
-│       │   ├── styles/      # Global styles
-│       │   ├── weather/     # Weather page
-│       │   ├── about/       # About page
-│       │   └── layout.tsx   # Root layout
-│       └── lib/         # Shared libraries
-├── backend/             # Backend application
 │   ├── src/
-│   │   ├── controllers/    # Request handlers
-│   │   ├── models/         # Database models
-│   │   ├── routes/         # API routes
-│   │   ├── middleware/     # Custom middleware
-│   │   ├── utils/          # Utility functions
-│   │   ├── config/         # Configuration files
-│   │   └── types/          # TypeScript type definitions
-│   ├── tests/              # Test files
-│   └── server.ts           # Entry point
-├── .env.local           # Environment variables
-├── package.json         # Dependencies
+│   │   ├── app/         # Next.js app router
+│   │   │   ├── components/  # Reusable UI components
+│   │   │   ├── hooks/       # Custom React hooks
+│   │   │   ├── utils/       # Utility functions
+│   │   │   ├── types/       # TypeScript type definitions
+│   │   │   ├── styles/      # Global styles
+│   │   │   ├── weather/     # Weather page
+│   │   │   ├── about/       # About page
+│   │   │   └── layout.tsx   # Root layout
+│   │   └── lib/         # Shared libraries
+│   ├── .env             # Frontend environment variables
+│   ├── package.json     # Frontend dependencies
+│   └── ...              # Other frontend config files
+├── backend/             # Backend application
+│   ├── index.js         # Main server file
+│   ├── .env             # Backend environment variables
+│   ├── package.json     # Backend dependencies
+│   └── ...              # Other backend files
 └── README.md            # Documentation
 ```
 
