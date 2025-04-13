@@ -87,6 +87,14 @@ A modern, responsive weather application that provides real-time weather informa
   - Chart.js for weather visualizations
   - React Icons
 
+- **Backend**
+  - Node.js
+  - Express.js
+  - TypeScript
+  - MongoDB for data storage
+  - JWT for authentication
+  - RESTful API architecture
+
 - **APIs**
   - WeatherAPI.com for weather data
   - OpenWeatherMap API (optional)
@@ -166,18 +174,30 @@ A modern, responsive weather application that provides real-time weather informa
 
 ```
 weather-space/
-├── public/              # Static assets
-├── src/
-│   ├── app/             # Next.js app router
-│   │   ├── components/  # Reusable UI components
-│   │   ├── hooks/       # Custom React hooks
-│   │   ├── utils/       # Utility functions
-│   │   ├── types/       # TypeScript type definitions
-│   │   ├── styles/      # Global styles
-│   │   ├── weather/     # Weather page
-│   │   ├── about/       # About page
-│   │   └── layout.tsx   # Root layout
-│   └── lib/             # Shared libraries
+├── frontend/            # Frontend application
+│   ├── public/          # Static assets
+│   └── src/
+│       ├── app/         # Next.js app router
+│       │   ├── components/  # Reusable UI components
+│       │   ├── hooks/       # Custom React hooks
+│       │   ├── utils/       # Utility functions
+│       │   ├── types/       # TypeScript type definitions
+│       │   ├── styles/      # Global styles
+│       │   ├── weather/     # Weather page
+│       │   ├── about/       # About page
+│       │   └── layout.tsx   # Root layout
+│       └── lib/         # Shared libraries
+├── backend/             # Backend application
+│   ├── src/
+│   │   ├── controllers/    # Request handlers
+│   │   ├── models/         # Database models
+│   │   ├── routes/         # API routes
+│   │   ├── middleware/     # Custom middleware
+│   │   ├── utils/          # Utility functions
+│   │   ├── config/         # Configuration files
+│   │   └── types/          # TypeScript type definitions
+│   ├── tests/              # Test files
+│   └── server.ts           # Entry point
 ├── .env.local           # Environment variables
 ├── package.json         # Dependencies
 └── README.md            # Documentation
