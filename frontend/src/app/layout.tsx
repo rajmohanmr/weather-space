@@ -1,9 +1,14 @@
 // app/layout.tsx
 import './globals.css'
+import { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Weather Space',
   description: 'Get weather updates around the globe',
+  icons: {
+    icon: '/weather-space-logo.svg',
+    apple: '/weather-space-logo.svg',
+  },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

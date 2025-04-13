@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Circle -->
+  <circle cx="256" cy="256" r="240" fill="url(#gradient)" />
+  
+  <!-- Cloud Shape -->
+  <path d="M256 120C200 120 160 160 160 216C160 240 168 262 180 280H332C344 262 352 240 352 216C352 160 312 120 256 120Z" fill="white" fill-opacity="0.9"/>
+  
+  <!-- Sun Rays -->
+  <g transform="translate(256, 256)">
+    <path d="M0 -180L20 -180L20 -140L-20 -140L-20 -180Z" fill="#FFD700"/>
+    <path d="M127 -127L140 -114L114 -140L127 -127Z" fill="#FFD700"/>
+    <path d="M180 0L180 20L140 20L140 -20L180 -20L180 0Z" fill="#FFD700"/>
+    <path d="M127 127L140 114L114 140L127 127Z" fill="#FFD700"/>
+    <path d="M0 180L20 180L20 140L-20 140L-20 180L0 180Z" fill="#FFD700"/>
+    <path d="M-127 127L-140 114L-114 140L-127 127Z" fill="#FFD700"/>
+    <path d="M-180 0L-180 20L-140 20L-140 -20L-180 -20L-180 0Z" fill="#FFD700"/>
+    <path d="M-127 -127L-140 -114L-114 -140L-127 -127Z" fill="#FFD700"/>
+  </g>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="512" y2="512" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3B82F6"/>
+      <stop offset="100%" stop-color="#8B5CF6"/>
+    </linearGradient>
+  </defs>
+</svg> 

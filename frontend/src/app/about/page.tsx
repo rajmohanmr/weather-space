@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
+import Navbar from '../components/Navbar'
 
 export default function AboutPage() {
   const [darkMode, setDarkMode] = useState(true)
@@ -27,53 +28,27 @@ export default function AboutPage() {
     <div className={`min-h-screen transition-colors duration-300 ${
       darkMode ? 'dark bg-gray-900 text-gray-100' : 'bg-white text-gray-900'
     }`}>
-      {/* Navbar */}
-      <nav className={`px-6 py-4 shadow-md ${
-        darkMode ? 'bg-gray-800 border-b border-gray-700' : 'bg-white'
-      }`}>
-        <div className="max-w-7xl mx-auto flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-            WeatherSpace
-          </Link>
-          <div className="flex items-center space-x-6">
-            <Link href="/" className={`hover:text-blue-500 transition ${
-              darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700'
-            }`}>
-              Home
-            </Link>
-            <Link href="/weather" className={`hover:text-blue-500 transition ${
-              darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700'
-            }`}>
-              Weather
-            </Link>
-            <Link href="/history" className={`hover:text-blue-500 transition ${
-              darkMode ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700'
-            }`}>
-              History
-            </Link>
-            <Link href="/about" className={`font-medium ${
-              darkMode ? 'text-blue-400' : 'text-blue-600'
-            }`}>
-              About
-            </Link>
-            <button 
-              onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition ${
-                darkMode ? 'bg-gray-700 text-yellow-300 hover:bg-gray-600' : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
-              aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-            >
-              {darkMode ? '☀️' : '🌙'}
-            </button>
-          </div>
-        </div>
-      </nav>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} currentPage="about" />
 
       {/* About Content */}
       <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
-          About WeatherSpace
-        </h1>
+        <div className="flex flex-col items-center mb-12">
+          <div className="relative w-32 h-32 mb-6">
+            <Image
+              src="/weather-space-logo.svg"
+              alt="WeatherSpace Logo"
+              fill
+              className="object-contain"
+              priority
+            />
+          </div>
+          <h1 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">
+            About WeatherSpace
+          </h1>
+          <p className={`text-lg text-center max-w-2xl ${darkMode ? 'text-gray-300' : 'text-gray-600'}`}>
+            Your trusted companion for accurate weather information and forecasts worldwide.
+          </p>
+        </div>
 
         <div className="space-y-8">
           {/* App Description Card */}
@@ -117,59 +92,33 @@ export default function AboutPage() {
             </div>
           </div>
 
-          {/* Weather APIs Card */}
+          {/* Weather API Card */}
           <div className={`p-6 rounded-xl shadow-lg transition-all duration-300 ${
             darkMode ? 'bg-gray-800' : 'bg-gray-50'
           }`}>
-            <h2 className="text-2xl font-semibold mb-4">Weather Data Sources</h2>
-            <div className="space-y-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0 h-10 w-10 relative mr-4">
-                  <Image
-                    src={darkMode ? '/weather-api-logo-light.png' : '/weather-api-logo-dark.png'}
-                    alt="WeatherAPI Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium">WeatherAPI.com</h3>
-                  <p className="mt-1">
-                    Our primary source for current weather data, forecasts, and location-based weather information.
-                  </p>
-                  <a 
-                    href="https://www.weatherapi.com/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-blue-500 hover:underline"
-                  >
-                    Visit Website
-                  </a>
-                </div>
+            <h2 className="text-2xl font-semibold mb-4">Weather Data Source</h2>
+            <div className="flex items-start">
+              <div className="flex-shrink-0 h-10 w-10 relative mr-4">
+                <Image
+                  src={darkMode ? '/weather-api-logo-dark.svg' : '/weather-api-logo-light.svg'}
+                  alt="WeatherAPI Logo"
+                  fill
+                  className="object-contain"
+                />
               </div>
-              <div className="flex items-start">
-                <div className="flex-shrink-0 h-10 w-10 relative mr-4">
-                  <Image
-                    src={darkMode ? '/openweather-logo-light.png' : '/openweather-logo-dark.png'}
-                    alt="OpenWeatherMap Logo"
-                    fill
-                    className="object-contain"
-                  />
-                </div>
-                <div>
-                  <h3 className="text-lg font-medium">OpenWeatherMap</h3>
-                  <p className="mt-1">
-                    Secondary source providing additional weather data and historical information.
-                  </p>
-                  <a 
-                    href="https://openweathermap.org/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="inline-block mt-2 text-blue-500 hover:underline"
-                  >
-                    Visit Website
-                  </a>
-                </div>
+              <div>
+                <h3 className="text-lg font-medium">WeatherAPI.com</h3>
+                <p className="mt-1">
+                  Our trusted source for current weather data, forecasts, and location-based weather information.
+                </p>
+                <a 
+                  href="https://www.weatherapi.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-block mt-2 text-blue-500 hover:underline"
+                >
+                  Visit Website
+                </a>
               </div>
             </div>
           </div>

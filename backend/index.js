@@ -3,21 +3,15 @@ const axios = require('axios');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
-const config = require('./src/config/config');
-const weatherRoutes = require('./src/routes/weatherRoutes');
-const errorHandler = require('./src/middleware/errorHandler');
 
 // Load environment variables
 dotenv.config();
 
 const app = express();
+const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors({
-  origin: config.corsOrigin,
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
@@ -40,9 +34,6 @@ const searchHistorySchema = new mongoose.Schema({
 });
 
 const SearchHistory = mongoose.model('SearchHistory', searchHistorySchema);
-
-// Routes
-app.use('/api/weather', weatherRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -152,10 +143,18 @@ app.delete('/api/weather/history', async (req, res) => {
   }
 });
 
-// Error handling
-app.use(errorHandler);
+// 404 fallback route
+app.use((req, res) => {
+  res.status(404).json({ error: 'Endpoint not found' });
+});
+
+// Global error handler
+app.use((err, req, res, next) => {
+  console.error('❌ Global server error:', err.stack);
+  res.status(500).json({ error: 'Internal server error' });
+});
 
 // Start server
-app.listen(config.port, () => {
-  console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode`);
+app.listen(PORT, () => {
+  console.log(`🚀 Server running on port ${PORT}`);
 });

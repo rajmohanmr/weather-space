@@ -1,131 +1,103 @@
 # Weather Space 🌤️
 
-A modern, responsive weather application that provides real-time weather information and forecasts for cities worldwide. Built with Next.js and Express, featuring a beautiful UI with dark mode support.
+A modern weather application built with Next.js, TypeScript, and TailwindCSS that provides real-time weather forecasts and beautiful visualizations.
 
-## Features ✨
+## Features
 
-- **Real-time Weather Data**: Get current weather conditions for any city
-- **Weather Forecast**: View detailed 7-day weather forecasts
-- **Major Cities**: Quick access to weather for major cities worldwide
-- **Interactive Charts**: Visual representation of temperature and precipitation trends
-- **Dark Mode**: Toggle between light and dark themes
-- **Responsive Design**: Beautiful UI that works on all devices
-- **Search Functionality**: Search for any city's weather
-- **Detailed Metrics**: View comprehensive weather data including:
-  - Temperature
-  - Humidity
-  - Wind speed and direction
-  - Pressure
-  - Visibility
-  - UV index
-  - Precipitation
+- 🌍 Real-time weather data from WeatherAPI
+- 📊 Interactive weather forecast charts
+- 🌙 Dark/Light mode support
+- 📱 Fully responsive design
+- ♿ Accessibility focused
+- 🎨 Modern and clean UI
 
-## Tech Stack 🛠️
+## Tech Stack
 
-### Frontend
-- Next.js 14
-- TypeScript
-- Tailwind CSS
-- Chart.js
-- React Icons
-- Axios
+- **Frontend:**
+  - Next.js 14
+  - TypeScript
+  - TailwindCSS
+  - Chart.js
+  - React Icons
 
-### Backend
-- Express.js
-- Node.js
-- WeatherAPI
+- **Development:**
+  - ESLint
+  - Jest
+  - TypeScript
+  - PostCSS
 
-## APIs Used 🌐
-
-- [WeatherAPI](https://www.weatherapi.com/): For real-time weather data and forecasts
-- OpenWeatherMap (optional): Backup weather data source
-
-## Getting Started 🚀
+## Getting Started
 
 ### Prerequisites
-- Node.js (v18 or higher)
+
+- Node.js >= 18.0.0
 - npm or yarn
-- WeatherAPI key
 
 ### Installation
 
-1. Clone the repository
-```bash
-git clone https://github.com/yourusername/weather-space.git
-cd weather-space
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/weather-space.git
+   cd weather-space
+   ```
 
-2. Install frontend dependencies
-```bash
-cd frontend
-npm install
-```
+2. Install dependencies:
+   ```bash
+   cd frontend
+   npm install
+   ```
 
-3. Install backend dependencies
-```bash
-cd ../backend
-npm install
-```
+3. Create a `.env.local` file in the frontend directory:
+   ```
+   NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
+   ```
 
-4. Set up environment variables
+4. Start the development server:
+   ```bash
+   npm run dev
+   ```
 
-Frontend (.env):
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001
-NEXT_PUBLIC_WEATHER_API_KEY=your_weather_api_key
-```
+5. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-Backend (.env):
-```env
-PORT=3001
-WEATHER_API_KEY=your_weather_api_key
-```
+## Available Scripts
 
-5. Start the development servers
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run start` - Start production server
+- `npm run lint` - Run ESLint
+- `npm run test` - Run Jest tests
+- `npm run type-check` - Run TypeScript type checking
 
-Backend:
-```bash
-cd backend
-npm run dev
-```
+## Deployment
 
-Frontend:
-```bash
-cd frontend
-npm run dev
-```
+The application can be deployed to various platforms:
 
-The application will be available at `http://localhost:3000`
+### Vercel (Recommended)
+1. Push your code to GitHub
+2. Import your repository to Vercel
+3. Add your environment variables
+4. Deploy!
 
-## Project Structure 📁
+### Railway
+1. Create a new project on Railway
+2. Connect your GitHub repository
+3. Add your environment variables
+4. Deploy!
 
-```
-weather-space/
-├── frontend/
-│   ├── src/
-│   │   ├── app/
-│   │   │   ├── components/
-│   │   │   ├── weather/
-│   │   │   ├── about/
-│   │   │   └── history/
-│   │   ├── styles/
-│   │   └── types/
-│   ├── public/
-│   └── package.json
-├── backend/
-│   ├── src/
-│   │   ├── controllers/
-│   │   ├── routes/
-│   │   ├── services/
-│   │   └── utils/
-│   └── package.json
-└── README.md
-```
+## Contributing
 
-## Contributing 🤝
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+## License
 
-## License 📝
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details. 
+## Acknowledgments
+
+- Weather data provided by [WeatherAPI](https://www.weatherapi.com/)
+- Icons by [React Icons](https://react-icons.github.io/react-icons/)
+- Charts powered by [Chart.js](https://www.chartjs.org/) 
